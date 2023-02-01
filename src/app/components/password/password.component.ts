@@ -8,7 +8,6 @@ import {
 @Component({
   selector: 'password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
   password = '';
@@ -20,36 +19,43 @@ export class PasswordComponent {
   };
 
   getSectionsColors(): void {
-    if (this.strength === PasswordStrength.empty)
-      this.sections = {
-        first: SectionColor.gray,
-        second: SectionColor.gray,
-        third: SectionColor.gray,
-      };
-    if (this.strength === PasswordStrength.short)
-      this.sections = {
-        first: SectionColor.red,
-        second: SectionColor.red,
-        third: SectionColor.red,
-      };
-    if (this.strength === PasswordStrength.easy)
-      this.sections = {
-        first: SectionColor.red,
-        second: SectionColor.gray,
-        third: SectionColor.gray,
-      };
-    if (this.strength === PasswordStrength.medium)
-      this.sections = {
-        first: SectionColor.yellow,
-        second: SectionColor.yellow,
-        third: SectionColor.gray,
-      };
-    if (this.strength === PasswordStrength.strong)
-      this.sections = {
-        first: SectionColor.green,
-        second: SectionColor.green,
-        third: SectionColor.green,
-      };
+    switch (this.strength) {
+      case PasswordStrength.empty:
+        this.sections = {
+          first: SectionColor.gray,
+          second: SectionColor.gray,
+          third: SectionColor.gray,
+        };
+        break;
+      case PasswordStrength.short:
+        this.sections = {
+          first: SectionColor.red,
+          second: SectionColor.red,
+          third: SectionColor.red,
+        };
+        break;
+      case PasswordStrength.easy:
+        this.sections = {
+          first: SectionColor.red,
+          second: SectionColor.gray,
+          third: SectionColor.gray,
+        };
+        break;
+      case PasswordStrength.medium:
+        this.sections = {
+          first: SectionColor.yellow,
+          second: SectionColor.yellow,
+          third: SectionColor.gray,
+        };
+        break;
+      case PasswordStrength.strong:
+        this.sections = {
+          first: SectionColor.green,
+          second: SectionColor.green,
+          third: SectionColor.green,
+        };
+        break;
+    }
   }
 
   calculateStrength(password: string): void {
